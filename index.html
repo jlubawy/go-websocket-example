@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebSocket Example</title>
+    </head>
+    <body>
+        <pre id="time"></pre>
+        <script>
+            (function() {
+                var time = document.getElementById('time');
+
+                var ws = new WebSocket('ws://localhost');
+
+                ws.onclose = function() {
+                    time.innerText = "Connection closed.";
+                };
+
+                ws.onmessage = function(msg) {
+                    time.innerText = msg.data;
+                };
+            })();
+        </script>
+    </body>
+</html>
